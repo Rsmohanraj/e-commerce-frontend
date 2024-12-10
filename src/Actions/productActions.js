@@ -28,7 +28,7 @@ import { createReviewFail,
  export const getProducts =  (keyword,price,category, rating, currentPage) =>async (dispatch) => {
     try{
         dispatch(productsRequest())
-        let link=`/api/v1/products?page=${currentPage}`;
+        let link=`https://e-comm-ulev.onrender.com/api/v1/products?page=${currentPage}`;
         
         if(keyword){
             link+=`&keyword=${keyword}`
@@ -58,7 +58,7 @@ import { createReviewFail,
  export const getProduct = id => async (dispatch) => {
     try{
         dispatch(productRequest())
-        const { data} = await axios.get(`/api/v1/product/${id}`);
+        const { data} = await axios.get(`https://e-comm-ulev.onrender.com/api/v1/product/${id}`);
         dispatch(productSuccess(data))
     }catch(error){
         dispatch(productFail(error.response.data.message));
@@ -89,7 +89,7 @@ export const createReview = (reviewData) => async (dispatch) => {
         };
 
     
-        const { data } = await axios.put('/api/v1/review', reviewData, config);
+        const { data } = await axios.put('https://e-comm-ulev.onrender.com/api/v1/review', reviewData, config);
 
         
         dispatch(createReviewSuccess(data));
@@ -123,7 +123,7 @@ export const getAdminProducts = async (dispatch) => {
         }
 
         // Make the GET request with the Authorization header
-        const { data } = await axios.get('/api/v1/admin/product', {
+        const { data } = await axios.get('https://e-comm-ulev.onrender.com/api/v1/admin/product', {
             headers: {
                 'Content-Type': 'application/json', // Optional, can be removed if unnecessary for GET
                 'Authorization': `Bearer ${token}`,  // Pass the token in the Authorization header
@@ -175,7 +175,7 @@ export const createNewProduct = (productData) => async (dispatch) => {
             });
         }
 
-        const { data } = await axios.post('/api/v1/admin/product/new', formData, {
+        const { data } = await axios.post('https://e-comm-ulev.onrender.com/api/v1/admin/product/new', formData, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
@@ -209,7 +209,7 @@ export const createNewProduct = (productData) => async (dispatch) => {
         }
 
         // Make the API call to delete the product
-        await axios.delete(`/api/v1/admin/product/${id}`, {
+        await axios.delete(`https://e-comm-ulev.onrender.com/api/v1/admin/product/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`, // Pass token in the header
             },
@@ -246,7 +246,7 @@ export const createNewProduct = (productData) => async (dispatch) => {
 
         // Make the PUT request to update the product
         const { data } = await axios.put(
-            `/api/v1/admin/product/${id}`, 
+            `https://e-comm-ulev.onrender.com/api/v1/admin/product/${id}`, 
             productData,
             {
                 headers: {
@@ -287,7 +287,7 @@ export const getReviews = (id) => async (dispatch) => {
         }
 
         // Make the GET request to fetch reviews with the Authorization header
-        const { data } = await axios.get('/api/v1/admin/reviews', {
+        const { data } = await axios.get('https://e-comm-ulev.onrender.com/api/v1/admin/reviews', {
             params: { id },  // Add 'id' as a query parameter
             headers: {
                 'Authorization': `Bearer ${token}`,  // Add the token to the headers
@@ -329,7 +329,7 @@ export const deleteReview = (productId, id) => async (dispatch) => {
         }
 
         // Make the DELETE request to delete the review
-        await axios.delete('/api/v1/admin/review', {
+        await axios.delete('https://e-comm-ulev.onrender.com/api/v1/admin/review', {
             params: { productId, id },  // Send the productId and id as query parameters
             headers: {
                 'Authorization': `Bearer ${token}`,  // Add the token to the Authorization header
