@@ -86,7 +86,7 @@ export default function Payment() {
       
           // Send payment request to the backend to process payment
           const { data } = await axios.post(
-            '/api/v1/payment/process',
+            'https://e-comm-ulev.onrender.com/api/v1/payment/process',
             paymentData,
             {
               headers: {
