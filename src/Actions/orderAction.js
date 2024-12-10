@@ -33,7 +33,7 @@ import { adminOrderFail, adminOrderRequest, adminOrderSuccess, createOrderFail,
           console.log('Sending order data:', order);
       
           // Send POST request to create a new order
-          const { data } = await axios.post('/api/v1/order/new', order, {
+          const { data } = await axios.post('https://e-comm-ulev.onrender.com/api/v1/order/new', order, {
             headers: {
               'Authorization': `Bearer ${token}`,
               'Content-Type': 'application/json',  // Ensure Content-Type is set to JSON
@@ -71,7 +71,7 @@ import { adminOrderFail, adminOrderRequest, adminOrderSuccess, createOrderFail,
             }
     
             // Make the GET request with the Authorization header
-            const { data } = await axios.get('/api/v1/my/orders', {
+            const { data } = await axios.get('https://e-comm-ulev.onrender.com/api/v1/my/orders', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json', // Optional: Ensure that the content type is set to JSON
@@ -104,7 +104,7 @@ import { adminOrderFail, adminOrderRequest, adminOrderSuccess, createOrderFail,
             }
     
             // Make the GET request with the Authorization header
-            const { data } = await axios.get(`/api/v1/order/${id}`, {
+            const { data } = await axios.get(`https://e-comm-ulev.onrender.com/api/v1/order/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json', // Optional: Ensure correct content type is set
@@ -142,7 +142,7 @@ import { adminOrderFail, adminOrderRequest, adminOrderSuccess, createOrderFail,
             }
     
             // Make the GET request with the Authorization header
-            const { data } = await axios.get('/api/v1/admin/orders', {
+            const { data } = await axios.get('https://e-comm-ulev.onrender.com/api/v1/admin/orders', {
                 headers: {
                     Authorization: `Bearer ${token}`,  // Pass the token in the Authorization header
                 },
@@ -178,7 +178,7 @@ import { adminOrderFail, adminOrderRequest, adminOrderSuccess, createOrderFail,
             const token = JSON.parse(userInfo).token; // Assuming userInfo is stored as a stringified object with a token field
     
             // Make the API call to delete the order
-            await axios.delete(`/api/v1/admin/order/${id}`, {
+            await axios.delete(`https://e-comm-ulev.onrender.com/api/v1/admin/order/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
                 }
@@ -213,7 +213,7 @@ import { adminOrderFail, adminOrderRequest, adminOrderSuccess, createOrderFail,
             }
     
             // Make a PUT request to update the order, passing the order data and authorization token
-            const { data } = await axios.put(`/api/v1/admin/order/${id}`, orderData, {
+            const { data } = await axios.put(`https://e-comm-ulev.onrender.com/api/v1/admin/order/${id}`, orderData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,  // Include token in the request header
                 }
