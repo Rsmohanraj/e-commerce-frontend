@@ -294,7 +294,7 @@ export const updateUser = (id, formData) => async (dispatch) => {
     const token = JSON.parse(localStorage.getItem('userInfo'))?.token || '';
 
     // Make the PUT request to update the user
-    const response = await axios.put(`/api/v1/admin/user/${id}`, formData, {
+    const response = await axios.put(`https://e-comm-ulev.onrender.com/api/v1/admin/user/${id}`, formData, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`, // Pass the token in the Authorization header
