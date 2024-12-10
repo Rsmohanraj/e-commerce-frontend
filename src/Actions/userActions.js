@@ -37,7 +37,7 @@ import { deleteUserFail,
         dispatch(loginRequest()); // Dispatch the login request action to set loading state
         
         // Make the POST request to the login API endpoint
-        const { data } = await axios.post('/api/v1/login', { email, password });
+        const { data } = await axios.post('https://e-comm-ulev.onrender.com/api/v1/login', { email, password });
         
         // Dispatch the success action with the response data
         dispatch(loginSuccess(data));
@@ -62,7 +62,7 @@ import { deleteUserFail,
         dispatch(registerRequest());
     
         // Send POST request to register the user
-        const { data } = await axios.post('/api/v1/register', userData);
+        const { data } = await axios.post('https://e-comm-ulev.onrender.com/api/v1/register', userData);
     
         // Dispatch the success action with the returned data
         dispatch(registerSuccess(data));
@@ -98,7 +98,7 @@ export const loadUser = async (dispatch) => {
     }
 
     // Proceed with the API call if token is present
-    const { data } = await axios.get('/api/v1/userprofile', {
+    const { data } = await axios.get('https://e-comm-ulev.onrender.com/api/v1/userprofile', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -120,7 +120,7 @@ export const loadUser = async (dispatch) => {
 export const logout = async(dispatch)=>{
    try{
       
-      await axios.get('/api/v1/logout');
+      await axios.get('https://e-comm-ulev.onrender.com/api/v1/logout');
        dispatch(logoutSuccess());
        localStorage.removeItem('userInfo');
    }catch(error){
@@ -150,7 +150,7 @@ export const updateProfile = (userData) => async (dispatch) => {
     };
 
     // Send the PUT request to update the user profile
-    const { data } = await axios.put('/api/v1/update', userData, config);
+    const { data } = await axios.put('https://e-comm-ulev.onrender.com/api/v1/update', userData, config);
 
     // Dispatch success action with the response data
     dispatch(updateProfileSuccess(data));
@@ -175,7 +175,7 @@ export const forgetPassword =(formData) => async(dispatch)=>{
        }
        
    
-        const {data}  = await axios.post('/api/v1//Password/forget',formData,config);
+        const {data}  = await axios.post('https://e-comm-ulev.onrender.com/api/v1//Password/forget',formData,config);
        dispatch(forgetPasswordSuccess(data));
    }catch(error){
        dispatch(forgetPasswordFail(error.response.data.message))
@@ -194,7 +194,7 @@ export const resetPassword =(formData,token) => async(dispatch)=>{
        }
        
    
-        const {data}  = await axios.post(  `/api/v1/password/reset/${token}`,formData,config);
+        const {data}  = await axios.post(  `https://e-comm-ulev.onrender.com/api/v1/password/reset/${token}`,formData,config);
        dispatch(resetPasswordSuccess(data));
    }catch(error){
        dispatch(resetPasswordFail(error.response.data.message))
@@ -218,7 +218,7 @@ export const getUsers = async (dispatch) => {
       }
 
       // Make the GET request with the Authorization header
-      const { data } = await axios.get('/api/v1/admin/users', {
+      const { data } = await axios.get('https://e-comm-ulev.onrender.com/api/v1/admin/users', {
           headers: {
               Authorization: `Bearer ${token}`,  // Use the token in the Authorization header
           },
@@ -243,7 +243,7 @@ export const getUsers = async (dispatch) => {
 export const getUser  = id =>  async(dispatch)=>{
    try{
        dispatch(userRequest())
-     const {data} = await axios.get(`/api/v1/admin/user/${id}`,{
+     const {data} = await axios.get(`https://e-comm-ulev.onrender.com/api/v1/admin/user/${id}`,{
        headers:{
            'content-type': "application/json",
            Authorization: `Bearer ${JSON.parse(localStorage.getItem('userInfo'))?.token || ''}` // Safely access the token
