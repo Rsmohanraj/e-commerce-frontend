@@ -69,7 +69,7 @@ const [stripeApiKey, setStripeApiKey] = useState();
         }
     
         // Send the GET request to fetch the Stripe API key
-        const { data } = await axios.get('/api/v1/stripeapi', {
+        const { data } = await axios.get('https://e-comm-ulev.onrender.com/api/v1/stripeapi', {
           headers: {
             Authorization: `Bearer ${token}`, // Correctly use the token in the Authorization header
             'Content-Type': 'application/json',
