@@ -9,7 +9,7 @@ import { logout } from '../Actions/userActions';
 
 
 export default function Header(){
-  const { isAuthenticated, user={ } = useSelector(state => state.authState);
+  const { isAuthenticated, user={} = useSelector(state => state.authState);
   const { items:cartItems } = useSelector(state => state.cartState)
   const dispatch = useDispatch();
   const navigate = useNavigate();
