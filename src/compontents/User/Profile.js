@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 import Loader from "../Loader";
 export default function Profile(){
- const {user,loading,error} = useSelector(state =>  state.authState);
+ const {user={},loading,error} = useSelector(state =>  state.authState);
 
     return(
         loading? <Loader /> : error? <h4>{error}</h4> :  <div>
