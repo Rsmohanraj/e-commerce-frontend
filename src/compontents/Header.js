@@ -1,15 +1,13 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-
 import { Link, useNavigate } from 'react-router-dom';
-import Search from '../compontents/Search';
+import Search from './Search';
 import {Dropdown } from 'react-bootstrap'
-
 import { logout } from '../Actions/userActions';
 
 
 export default function Header(){
-  const { isAuthenticated, user={} = useSelector(state => state.authState);
+  const { isAuthenticated, user={} } = useSelector(state => state.authState);
   const { items:cartItems } = useSelector(state => state.cartState)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,6 +17,7 @@ export default function Header(){
 
 
   return (
+   
   <nav className="navbar row">
       <div className="col-12 col-md-3">
         <div className="navbar-brand">
@@ -41,7 +40,7 @@ export default function Header(){
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                     { user.role === 'admin' && <Dropdown.Item onClick={() => {navigate('admin/dashboard')}} className='text-dark'>Dashboard</Dropdown.Item> }
-                    <Dropdown.Item onClick={() => {navigate('/myprofile')}} className='text-dark'>Profile</Dropdown.Item>
+                    <Dropdown.Item onClick={() => {navigate('/myProfile')}} className='text-dark'>Profile</Dropdown.Item>
                     <Dropdown.Item onClick={() => {navigate('/orders')}} className='text-dark'>Orders</Dropdown.Item>
                     <Dropdown.Item onClick={logoutHandler} className='text-danger'>Logout</Dropdown.Item>
                 </Dropdown.Menu>
