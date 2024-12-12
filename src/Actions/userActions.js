@@ -194,7 +194,7 @@ export const resetPassword =(formData,token) => async(dispatch)=>{
        }
        
    
-        const {data}  = await axios.post(  `https://e-comm-ulev.onrender.com/password/reset/${token}`,formData,config);
+        const {data}  = await axios.post(  `https://e-comm-ulev.onrender.com/api/v1/password/reset/${token}`,formData,config);
        dispatch(resetPasswordSuccess(data));
    }catch(error){
        dispatch(resetPasswordFail(error.response.data.message))
